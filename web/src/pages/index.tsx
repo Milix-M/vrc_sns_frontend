@@ -1,35 +1,37 @@
-import { Button, Card, CardBody, CardHeader } from "@nextui-org/react";
-import getLayout from "@/components/layouts/non_header";
-import { FcGoogle } from "react-icons/fc";
-import { useRouter } from "next/router";
+import { Button, Card, CardBody, CardHeader } from '@nextui-org/react'
+import getLayout from '@/components/layouts/non_header'
+import { FcGoogle } from 'react-icons/fc'
+import { useRouter } from 'next/router'
 
 const Login = () => {
-  const router = useRouter();
-  const apiEndpoint = `${process.env.NEXT_PUBLIC_API_ENDPOINT}`;
-  function redirectGoogleLogin() {
-    router.push(`${apiEndpoint}/api/google/login`);
+  const router = useRouter()
+  const apiEndpoint = `${process.env.NEXT_PUBLIC_API_ENDPOINT}`
+  function redirectGoogleLogin () {
+    router.push(`${apiEndpoint}/api/google/login`)
   }
 
   return (
-    <Card className="min-w-[420px] mx-auto">
-      <CardHeader>
-        <h1>Login</h1>
-      </CardHeader>
-      <CardBody>
-        <Button
-          variant="bordered"
-          startContent={<FcGoogle />}
-          onPress={() => {
-            redirectGoogleLogin();
-          }}
-        >
-          Login with Google
-        </Button>
-      </CardBody>
-    </Card>
-  );
-};
+    <div>
+      <Card className='min-w-[420px] mx-auto'>
+        <CardHeader>
+          <h1>Login</h1>
+        </CardHeader>
+        <CardBody>
+          <Button
+            variant='bordered'
+            startContent={<FcGoogle />}
+            onPress={() => {
+              redirectGoogleLogin()
+            }}
+          >
+            Login with Google
+          </Button>
+        </CardBody>
+      </Card>
+    </div>
+  )
+}
 
-Login.getLayout = getLayout;
+Login.getLayout = getLayout
 
-export default Login;
+export default Login

@@ -7,7 +7,7 @@ const Login = () => {
   const router = useRouter();
   const apiEndpoint = `${process.env.NEXT_PUBLIC_API_ENDPOINT}`;
   function redirectGoogleLogin() {
-    router.push(`${apiEndpoint}/api/auth/google/login`);
+    router.push(`${apiEndpoint}/api/google/login`);
   }
 
   return (

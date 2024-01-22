@@ -7,7 +7,7 @@ export default function App ({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   return (
-    <NextUIProvider>
+    <NextUIProvider navigate={router.push}>
       <Component {...pageProps} />;
     </NextUIProvider>
   )

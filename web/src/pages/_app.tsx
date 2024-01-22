@@ -3,7 +3,6 @@ import { Noto_Sans_JP } from 'next/font/google'
 import { NextUIProvider } from '@nextui-org/react'
 import { NextPage } from 'next'
 import type { AppProps } from 'next/app'
-import { useRouter } from 'next/router'
 import { ThemeProvider as NextThemesProvider } from 'next-themes'
 
 const notoSansJapanese = Noto_Sans_JP({

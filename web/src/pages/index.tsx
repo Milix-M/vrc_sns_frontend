@@ -12,9 +12,13 @@ const Login = () => {
 
   return (
     <div>
-      <Card className='min-w-[420px] mx-auto'>
+      <h1 className='text-center text-5xl font-bold tracking-wider'>Fuzzy</h1>
+      <p className='text-center mt-4 tracking-widest'>
+        Open source SNS application
+      </p>
+      <Card className='min-w-[420px] mx-auto mt-4'>
         <CardHeader>
-          <h1>Login</h1>
+          <h1>ログイン/サインイン</h1>
         </CardHeader>
         <CardBody>
           <Button

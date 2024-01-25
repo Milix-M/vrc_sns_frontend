@@ -5,7 +5,10 @@ type LayoutProps = Required<{
 }>;
 
 export const Layout = ({ children } : LayoutProps) => (
-    <main className="w-full min-h-screen my-4 flex-col flex items-center">
+    // <main className="w-full min-h-screen my-4 flex-col flex items-center">
+    //     {children}
+    // </main>
+    <main className="justify-center min-h-screen flex items-center">
         {children}
     </main>
 );

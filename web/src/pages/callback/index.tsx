@@ -14,7 +14,7 @@ const Callback = () => {
           seal
         })
         .finally(() => {
-          router.replace('/')
+          router.replace('/signup')
         })
     }
   }, [router, query])

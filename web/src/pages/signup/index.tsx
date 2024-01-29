@@ -8,13 +8,13 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup';
 
 
-type Inputs = {
+type FormDataInfo = {
   name: string
   userid: string
   // submit: any
 }
 
-const scheme: yup.ObjectSchema<Inputs> = yup.object({
+const scheme: yup.ObjectSchema<FormDataInfo> = yup.object({
   name: yup.string().required('名前を入力してください').max(50, "50字以下にしてください"),
   userid: yup.string().required('ユーザーIDを入力してください').max(15, "15字以下にしてください")
 })
@@ -28,8 +28,8 @@ const Signup = () => {
     watch,
     control,
     formState: { errors },
-  } = useForm<Inputs>()
-  const onSubmit:SubmitHandler<Inputs> = (data) => console.log(data)
+  } = useForm<FormDataInfo>()
+  const onSubmit:SubmitHandler<FormDataInfo> = (data) => console.log(data)
 
 
   return (

@@ -24,8 +24,6 @@ const Signup = () => {
   } = useForm<Inputs>()
   const onSubmit:SubmitHandler<Inputs> = (data) => console.log(data)
 
-  const name = watch("name")
-  const userid = watch("userid")
 
   return (
     <div className='m-4'>
@@ -39,14 +37,14 @@ const Signup = () => {
                   <Input
                     type='text'
                     label='名前'
+                    errorMessage={errors.name?.message && (
+                      <p className='text-xs ml-1 mt-1 text-red-500'>{errors.name?.message}</p>
+                    )}
                     {...register("name", {
                       required: "名前を入力してください",
                       maxLength: { value: 50, message: "50字以下にしてください"}
                     })}
                   />
-                  {errors.name?.message && (
-                    <p className='text-xs ml-1 mt-1 text-red-500'>{errors.name?.message}</p>
-                  )}
                 </div>
                 <div className='flex flex-col w-full'>
                   <Input
@@ -56,14 +54,14 @@ const Signup = () => {
                     type='text'
                     label='ユーザーID'
                     description='英数字、アンダースコア(_)15桁以内で入力'
+                    errorMessage={errors.userid?.message && (
+                      <p className='text-xs ml-1 mt-1 text-red-500'>{errors.userid?.message}</p>
+                    )}
                     {...register("userid", {
                       required: "ユーザーIDを入力してください",
                       maxLength: { value: 50, message: "15字以下にしてください"}
                     })}
                   />
-                  {errors.userid?.message && (
-                    <p className='text-xs ml-1 text-red-500'>{errors.userid?.message}</p>
-                  )}
                 </div>
               </div>
               <div className='flex flex-wrap justify-end'>

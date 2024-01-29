@@ -48,8 +48,7 @@ async function checkUserInitialized(accessToken: AccessTokenType): Promise<boole
       'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`
     }
-  }).then(async res => res.ok)
-
+  }).then(async res => res.json())
   return isInitialized
 }
 

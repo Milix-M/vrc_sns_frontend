@@ -14,7 +14,7 @@ type FormDataInfo = {
   // submit: any
 }
 
-const scheme: yup.ObjectSchema<FormDataInfo> = yup.object({
+const scheme: yup.ObjectSchema<FormDataInfo> = yup.object().shape({
   name: yup.string().required('名前を入力してください').max(50, "50字以下にしてください"),
   userid: yup.string().required('ユーザーIDを入力してください').max(15, "15字以下にしてください")
 })
@@ -28,7 +28,10 @@ const Signup = () => {
     watch,
     control,
     formState: { errors },
-  } = useForm<FormDataInfo>()
+  } = useForm<FormDataInfo>({
+    mode: 'onSubmit',
+    resolver: yupResolver(scheme)
+  })
   const onSubmit:SubmitHandler<FormDataInfo> = (data) => console.log(data)
 
 
@@ -47,10 +50,7 @@ const Signup = () => {
                     errorMessage={errors.name?.message && (
                       <p className='text-xs text-red-500'>{errors.name?.message}</p>
                     )}
-                    {...register("name", {
-                      required: "名前を入力してください",
-                      maxLength: { value: 50, message: "50字以下にしてください"}
-                    })}
+                    {...register("name")}
                   />
                 </div>
                 <div className='flex flex-col w-full'>
@@ -64,10 +64,7 @@ const Signup = () => {
                     errorMessage={errors.userid?.message && (
                       <p className='text-xs text-red-500'>{errors.userid?.message}</p>
                     )}
-                    {...register("userid", {
-                      required: "ユーザーIDを入力してください",
-                      maxLength: { value: 50, message: "15字以下にしてください"}
-                    })}
+                    {...register("userid")}
                   />
                 </div>
               </div>

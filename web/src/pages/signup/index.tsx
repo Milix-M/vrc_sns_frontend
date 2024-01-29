@@ -21,8 +21,12 @@ const updateUserInfo = async (
   axios.patch('/api/users/me', {
     username,
     userid
+  }).then(response =>{
+    router.push('/home')
+  }).catch(error => {
+    //todo エラーが出た時の処理を書く
   })
-  router.push('/home')
+
 }
 
 const scheme: yup.ObjectSchema<FormDataInfo> = yup.object().shape({

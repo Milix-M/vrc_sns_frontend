@@ -39,12 +39,29 @@ async function checkAuth (accessToken: AccessTokenType): Promise<boolean> {
   return isSucceeded
 }
 
+async function checkUserInitialized(accessToken: AccessTokenType): Promise<boolean> {
+  // console.log()
+  const isInitialized = await fetch(`${process.env.API_ENDPOINT}/api/users/initialized`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`
+    }
+  }).then(async res => res.json())
+  return isInitialized
+}
+
 function redirectToLoginPage (request: NextRequest): NextResponse {
   return NextResponse.redirect(new URL('/', request.url))
 }
 
 function redirectToHomePage (request: NextRequest): NextResponse {
   return NextResponse.redirect(new URL('/home', request.url))
+}
+
+function redirectUserSignupPage (request: NextRequest): NextResponse {
+  return NextResponse.redirect(new URL('/signup', request.url))
 }
 
 async function middleware (request: NextRequest) {
@@ -56,12 +73,20 @@ async function middleware (request: NextRequest) {
 
   if (request.nextUrl.pathname === '/' && accessToken !== undefined) {
     if (await checkAuth(accessToken)) {
+      // ユーザーが認証されてて初期情報を登録されてなかったときSignupページに飛ばす
+      if (await checkUserInitialized(accessToken) === false) {
+        return redirectUserSignupPage(request)
+      }
       return redirectToHomePage(request)
     }
 
     if (sessionId !== undefined) {
       accessToken = await refreshToken(sessionId)
       if (accessToken !== undefined && (await checkAuth(accessToken))) {
+      // ユーザーが認証されてて初期情報を登録されてなかったときSignupページに飛ばす
+      if (await checkUserInitialized(accessToken)  === false) {
+        return redirectUserSignupPage(request)
+      }
         return redirectToHomePage(request)
       }
     }

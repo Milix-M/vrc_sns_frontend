@@ -38,7 +38,7 @@ const Signup = () => {
                     type='text'
                     label='名前'
                     errorMessage={errors.name?.message && (
-                      <p className='text-xs ml-1 mt-1 text-red-500'>{errors.name?.message}</p>
+                      <p className='text-xs text-red-500'>{errors.name?.message}</p>
                     )}
                     {...register("name", {
                       required: "名前を入力してください",
@@ -55,7 +55,7 @@ const Signup = () => {
                     label='ユーザーID'
                     description='英数字、アンダースコア(_)15桁以内で入力'
                     errorMessage={errors.userid?.message && (
-                      <p className='text-xs ml-1 mt-1 text-red-500'>{errors.userid?.message}</p>
+                      <p className='text-xs text-red-500'>{errors.userid?.message}</p>
                     )}
                     {...register("userid", {
                       required: "ユーザーIDを入力してください",

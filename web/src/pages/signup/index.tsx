@@ -26,6 +26,7 @@ const Signup = () => {
     register,
     handleSubmit,
     watch,
+    control,
     formState: { errors },
   } = useForm<Inputs>()
   const onSubmit:SubmitHandler<Inputs> = (data) => console.log(data)

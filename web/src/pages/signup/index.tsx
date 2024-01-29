@@ -35,32 +35,36 @@ const Signup = () => {
             <div className='signup'>
               <div className='flex flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4'>
                 <h1 className='text-center text-xl'>プロフィールを登録🎉</h1>
-                <Input
-                  type='text'
-                  label='名前'
-                  maxLength={50}
-                  {...register("name", {
-                    required: "名前を入力してください"
-                  })}
-                />
-                {errors.name?.message && (
-                  <p className='text-xs'>{errors.name?.message}</p>
-                )}
-                <Input
-                  classNames={{
-                    description: ['text-gray-300/90']
-                  }}
-                  type='text'
-                  label='ユーザーID'
-                  maxLength={15}
-                  description='英数字、アンダースコア(_)15桁以内で入力'
-                  {...register("userid", {
-                    required: "ユーザーIDを入力してください"
-                  })}
-                />
-                {errors.userid?.message && (
-                  <p className='text-xs'>{errors.userid?.message}</p>
-                )}
+                <div className='flex flex-col w-full'>
+                  <Input
+                    type='text'
+                    label='名前'
+                    maxLength={50}
+                    {...register("name", {
+                      required: "名前を入力してください"
+                    })}
+                  />
+                  {errors.name?.message && (
+                    <p className='text-xs ml-1 mt-1 text-red-500'>{errors.name?.message}</p>
+                  )}
+                </div>
+                <div className='flex flex-col w-full'>
+                  <Input
+                    classNames={{
+                      description: ['text-gray-300/90']
+                    }}
+                    type='text'
+                    label='ユーザーID'
+                    maxLength={15}
+                    description='英数字、アンダースコア(_)15桁以内で入力'
+                    {...register("userid", {
+                      required: "ユーザーIDを入力してください"
+                    })}
+                  />
+                  {errors.userid?.message && (
+                    <p className='text-xs ml-1 text-red-500'>{errors.userid?.message}</p>
+                  )}
+                </div>
               </div>
               <div className='flex flex-wrap justify-end'>
                 <Button

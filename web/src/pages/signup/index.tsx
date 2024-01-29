@@ -3,15 +3,21 @@ import getLayout from '@/components/layouts/non_header'
 import { NextRouter, useRouter } from 'next/router'
 import { useState } from 'react'
 import { Button, Card, CardBody, Input } from '@nextui-org/react'
-
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup';
+
 
 type Inputs = {
   name: string
   userid: string
-  submit: any
+  // submit: any
 }
 
+const scheme: yup.ObjectSchema<Inputs> = yup.object({
+  name: yup.string().required('名前を入力してください').max(50, "50字以下にしてください"),
+  userid: yup.string().required('ユーザーIDを入力してください').max(15, "15字以下にしてください")
+})
 
 const Signup = () => {
   const router = useRouter()

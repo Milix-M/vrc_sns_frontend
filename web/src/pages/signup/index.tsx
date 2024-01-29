@@ -39,9 +39,9 @@ const Signup = () => {
                   <Input
                     type='text'
                     label='名前'
-                    maxLength={50}
                     {...register("name", {
-                      required: "名前を入力してください"
+                      required: "名前を入力してください",
+                      maxLength: { value: 50, message: "50字以下にしてください"}
                     })}
                   />
                   {errors.name?.message && (
@@ -55,10 +55,10 @@ const Signup = () => {
                     }}
                     type='text'
                     label='ユーザーID'
-                    maxLength={15}
                     description='英数字、アンダースコア(_)15桁以内で入力'
                     {...register("userid", {
-                      required: "ユーザーIDを入力してください"
+                      required: "ユーザーIDを入力してください",
+                      maxLength: { value: 50, message: "15字以下にしてください"}
                     })}
                   />
                   {errors.userid?.message && (

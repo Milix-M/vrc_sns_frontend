@@ -15,8 +15,15 @@ type FormDataInfo = {
 }
 
 const scheme: yup.ObjectSchema<FormDataInfo> = yup.object().shape({
-  name: yup.string().required('名前を入力してください').max(50, "50字以下にしてください"),
-  userid: yup.string().required('ユーザーIDを入力してください').max(15, "15字以下にしてください")
+  name: yup
+    .string()
+    .required('名前を入力してください')
+    .max(50, "50字以下にしてください"),
+  userid: yup
+    .string()
+    .required('ユーザーIDを入力してください')
+    .max(15, "15字以下にしてください")
+    .matches(/^[a-zA-Z0-9_]+$/, '英数字とアンダースコアのみが使用可能です。'),
 })
 
 const Signup = () => {

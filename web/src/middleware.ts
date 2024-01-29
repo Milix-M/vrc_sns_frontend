@@ -75,7 +75,7 @@ async function middleware (request: NextRequest) {
   if (request.nextUrl.pathname === '/' && accessToken !== undefined) {
     if (await checkAuth(accessToken)) {
       // ユーザーが認証されてて初期情報を登録されてなかったときSignupページに飛ばす
-      if (await checkUserInitialized(accessToken)) {
+      if (await checkUserInitialized(accessToken) === false) {
         return redirectUserSignupPage(request)
       }
       return redirectToHomePage(request)
@@ -85,7 +85,7 @@ async function middleware (request: NextRequest) {
       accessToken = await refreshToken(sessionId)
       if (accessToken !== undefined && (await checkAuth(accessToken))) {
       // ユーザーが認証されてて初期情報を登録されてなかったときSignupページに飛ばす
-      if (await checkUserInitialized(accessToken)) {
+      if (await checkUserInitialized(accessToken)  === false) {
         return redirectUserSignupPage(request)
       }
         return redirectToHomePage(request)

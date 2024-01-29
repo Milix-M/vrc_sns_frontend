@@ -56,7 +56,11 @@ const Signup = () => {
     <div className='m-4'>
       <Card className='max-w-[420px] w-full mx-auto mt-4 p-2'>
         <CardBody>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form
+            onSubmit={handleSubmit(async data => {
+              await updateUserInfo(router, data.name, data.userid)
+            })}
+          >
             <div className='signup'>
               <div className='flex flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4'>
                 <h1 className='text-center text-xl'>プロフィールを登録🎉</h1>

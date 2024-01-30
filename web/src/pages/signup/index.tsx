@@ -1,7 +1,6 @@
 import axios from 'lib/axios'
 import getLayout from '@/components/layouts/non_header'
 import { NextRouter, useRouter } from 'next/router'
-import { useState } from 'react'
 import { Button, Card, CardBody, Input } from '@nextui-org/react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'

@@ -6,7 +6,7 @@ import { IoBookmarkOutline } from 'react-icons/io5'
 
 const PostDisplay: React.FC = () => {
   return (
-    <div className='w-full max-w-2xl bg-overlay p-4 rounded-md mt-4'>
+    <div className='w-full max-w-2xl bg-overlay p-4 border-b border-slate-600/80'>
       <div className='flex flex-row'>
         <div className='post-avator pr-3'>
           <a href='#'>

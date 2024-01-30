@@ -1,31 +1,15 @@
-import axios from 'lib/axios'
 import getLayout from '@/components/layouts/non_header'
-import { NextRouter, useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { Button, Card, CardBody, Input } from '@nextui-org/react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import updateUserInfo from '@/hooks/UserInfoUpdate'
 import * as yup from 'yup'
 
 type FormDataInfo = {
   name: string
   userid: string
   // submit: any
-}
-
-const updateUserInfo = async (
-  router: NextRouter,
-  username: string,
-  userid: string
-) => {
-  axios.patch('/api/users/me', {
-    username,
-    userid
-  }).then(response =>{
-    router.push('/home')
-  }).catch(error => {
-    //todo エラーが出た時の処理を書く
-  })
-
 }
 
 const scheme: yup.ObjectSchema<FormDataInfo> = yup.object().shape({

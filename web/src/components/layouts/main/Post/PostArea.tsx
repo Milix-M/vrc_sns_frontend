@@ -5,12 +5,39 @@ import { PiEyeSlash } from 'react-icons/pi'
 import { HiOutlineEmojiHappy } from 'react-icons/hi'
 import { LuSend } from 'react-icons/lu'
 import postAreaCSS from "./PostArea.module.scss"
+import { useState } from 'react'
+import axios from 'lib/axios'
 
 const PostArea: React.FC = () => {
+  const [content, setContent] = useState<string>("")
+
+  const handlePost = async () => {
+    if (!content.trim()) {
+      alert("投稿内容は必須です")
+      return
+    }
+
+    const requestBody = {
+      content,
+    }
+
+    try {
+      await axios.post("/api/post/create", requestBody)
+
+      setContent("")
+    } catch (err) {
+      console.log("Error posting data:", err)
+    }
+  }
+
   return (
     <div className={`${postAreaCSS.postArea} bg-overlay p-4 rounded-md`}>
       <div className='flex flex-col rounded-md p-1 mb-2 text-foreground placeholder:focus'>
-        <Textarea placeholder='いまなにしてはるん？' />
+        <Textarea
+          placeholder='いまなにしてはるん？'
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
         <div className='mt-3 flex flex-1 flex-row flex-wrap'>
           <div className='flex flex-row justify-between mr-2'>
             <Tooltip content="画像を追加">
@@ -37,7 +64,7 @@ const PostArea: React.FC = () => {
               </Button>
             </Tooltip>
           </div>
-          <Button className='bg-[#2b94ff] ml-auto' type='submit'>
+          <Button className='bg-[#2b94ff] ml-auto' type='submit' onClick={handlePost}>
             ポスト
             <LuSend />
           </Button>

@@ -1,13 +1,15 @@
-import React from "react";
-import getLayout from "@/components/layouts/non_header";
+import React from 'react'
+import PostArea from '@/components/layouts/main/Post/PostArea'
+import getLayout from '@/components/layouts/main'
+import PostList from '@/components/layouts/main/Post/PostList'
 
 const Home = () => (
   <div>
-    <h1>あいうえお　仮置きだよ</h1>
-    <h1>工事中</h1>
+    <PostArea />
+    <PostList />
   </div>
-);
+)
 
-Home.getLayout = getLayout;
+Home.getLayout = getLayout
 
-export default Home;
+export default Home

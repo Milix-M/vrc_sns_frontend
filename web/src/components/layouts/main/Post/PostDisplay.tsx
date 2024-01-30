@@ -3,10 +3,11 @@ import { BsThreeDots } from 'react-icons/bs'
 import { FaRegComment, FaRegStar } from 'react-icons/fa'
 import { FaRetweet } from 'react-icons/fa6'
 import { IoBookmarkOutline } from 'react-icons/io5'
+import postAreaCSS from "./PostArea.module.scss"
 
 const PostDisplay: React.FC = () => {
   return (
-    <div className='w-full max-w-2xl bg-overlay p-4 border-b border-slate-600/80'>
+    <div className={`${postAreaCSS.PostDisplay} bg-overlay p-4 border-b border-slate-600/80`}>
       <div className='flex flex-row'>
         <div className='post-avator pr-3'>
           <a href='#'>

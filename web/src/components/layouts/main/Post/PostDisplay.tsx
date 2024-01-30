@@ -10,13 +10,13 @@ const PostDisplay: React.FC = () => {
       <div className='flex flex-row'>
         <div className='post-avator pr-3'>
           <a href='#'>
-            <Avatar showFallback src='' />
+            <Avatar showFallback className='w-12 h-12' src='' />
           </a>
         </div>
-        <div className=''>
+        <div className='w-full'>
           <div className='post-header-name flex flex-wrap items-center'>
-            <h3 className='font-bold pr-2'>ユーザー名をここに表示</h3>
-            <span className='font-thin text-sm'>@testuser</span>
+            <h3 className='font-bold pr-2'>ユーザー名</h3>
+            <span className='font-thin text-sm'>@test</span>
             <time
               title='2024/1/30 10:10:10'
               className='font-thin text-sm ml-auto'
@@ -25,8 +25,7 @@ const PostDisplay: React.FC = () => {
             </time>
           </div>
           <div className='mb-2 text-foreground'>
-            テストの投稿データです。 今日の勤務もお疲れ様でした。
-            明日も頑張ってください。
+            テストの投稿データです。 
           </div>
           <div className='flex flex-row justify-between'>
             <Button isIconOnly variant='light'>

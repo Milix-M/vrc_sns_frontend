@@ -7,9 +7,12 @@ import { LuSend } from 'react-icons/lu'
 import postAreaCSS from "./PostArea.module.scss"
 import { useState } from 'react'
 import axios from 'lib/axios'
+import data from "@emoji-mart/data/sets/14/twitter.json";
+import Picker from "@emoji-mart/react";
 
 const PostArea: React.FC = () => {
   const [content, setContent] = useState<string>("")
+  const [isPickerOpened, setIsPickerOpened] = useState<boolean>(false)
 
   const handlePost = async () => {
     if (!content.trim()) {
@@ -31,15 +34,15 @@ const PostArea: React.FC = () => {
   }
 
   return (
-    <div className={`${postAreaCSS.postArea} bg-overlay p-4 rounded-md`}>
+    <div className="w-full bg-overlay p-4 rounded-md">
       <div className='flex flex-col rounded-md p-1 mb-2 text-foreground placeholder:focus'>
         <Textarea
           placeholder='いまなにしてはるん？'
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
-        <div className='mt-3 flex flex-1 flex-row flex-wrap'>
-          <div className='flex flex-row justify-between mr-2'>
+        <div className='mt-3 flex flex-1 flex-row flex-wrap justify-between relative'>
+          <div className='flex flex-row mr-2'>
             <Tooltip content="画像を追加">
               <Button isIconOnly variant='light'>
                 <RiImageAddLine color='#2b94ff' size={'1.4rem'} />
@@ -59,12 +62,17 @@ const PostArea: React.FC = () => {
             </Tooltip>
 
             <Tooltip content="絵文字ピッカー">
-              <Button isIconOnly variant='light'>
+              <Button isIconOnly variant='light' onClick={() => setIsPickerOpened(!isPickerOpened)}>
                 <HiOutlineEmojiHappy color='#2b94ff' size={'1.4rem'} />
               </Button>
             </Tooltip>
+            { isPickerOpened && (
+              <div className="absolute z-50 top-[40px] w-full">
+                <Picker data={data} onEmojiSelect={console.log} set="twitter" dynamicWidth={true} onClickOutside={() => setIsPickerOpened(false)}/>
+              </div>
+            )}
           </div>
-          <Button className='bg-[#2b94ff] ml-auto' type='submit' onClick={handlePost}>
+          <Button className='bg-[#2b94ff]' type='submit' onClick={handlePost}>
             ポスト
             <LuSend />
           </Button>

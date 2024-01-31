@@ -6,29 +6,29 @@
     margin-right: auto;
 }
 
-@media (max-width: 550px) {
-    .postArea {
-        margin-top: 65px;
-    }
-}
+// @media (max-width: 550px) {
+//     .postArea {
+//         margin-top: 65px;
+//     }
+// }
 
-@media (min-width: 550px) {
-    .postArea,
-    .postDisplay {
-        max-width: 350px;
-    }
-}
+// @media (min-width: 550px) {
+//     .postArea,
+//     .postDisplay {
+//         max-width: 350px;
+//     }
+// }
 
-@media (min-width: 850px) {
-    .postArea,
-    .postDisplay {
-        max-width: 550px;
-    }
-}
+// @media (min-width: 850px) {
+//     .postArea,
+//     .postDisplay {
+//         max-width: 550px;
+//     }
+// }
 
-@media (min-width: 1000px) {
-    .postArea,
-    .postDisplay {
-        max-width: 800px;
-    }
-}
+// @media (min-width: 1000px) {
+//     .postArea,
+//     .postDisplay {
+//         max-width: 800px;
+//     }
+// }

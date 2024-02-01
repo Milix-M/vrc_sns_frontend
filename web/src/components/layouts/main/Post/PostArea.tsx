@@ -10,6 +10,7 @@ import axios from 'lib/axios'
 import data from '@emoji-mart/data/sets/14/twitter.json'
 import Picker from '@emoji-mart/react'
 import { useTheme } from 'next-themes'
+import i18n from '@emoji-mart/data/i18n/ja.json'
 
 const PostArea: React.FC = () => {
   const [content, setContent] = useState<string>('')
@@ -79,6 +80,7 @@ const PostArea: React.FC = () => {
                   data={data}
                   onEmojiSelect={console.log}
                   set='twitter'
+                  i18n={ i18n }
                   dynamicWidth={true}
                   onClickOutside={() => setIsPickerOpened(false)}
                 />

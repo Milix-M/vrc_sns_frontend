@@ -11,11 +11,12 @@ import data from '@emoji-mart/data/sets/14/twitter.json'
 import Picker from '@emoji-mart/react'
 import { useTheme } from 'next-themes'
 import i18n from '@emoji-mart/data/i18n/ja.json'
+import { EmojiType } from 'lib/types'
 
 const PostArea: React.FC = () => {
   const [content, setContent] = useState<string>('')
   const [isPickerOpened, setIsPickerOpened] = useState<boolean>(false)
-  const { theme } = useTheme();
+  const { theme } = useTheme()
 
   const handlePost = async () => {
     if (!content.trim()) {
@@ -76,11 +77,13 @@ const PostArea: React.FC = () => {
             {isPickerOpened && (
               <div className='absolute z-50 top-[40px] w-full'>
                 <Picker
-                  theme={theme === "light" ? "light" : "dark"}
+                  theme={theme === 'light' ? 'light' : 'dark'}
                   data={data}
-                  onEmojiSelect={console.log}
+                  onEmojiSelect={(emoji: EmojiType) =>
+                    setContent(prevContent => prevContent + emoji.native)
+                  }
                   set='twitter'
-                  i18n={ i18n }
+                  i18n={i18n}
                   dynamicWidth={true}
                   onClickOutside={() => setIsPickerOpened(false)}
                 />

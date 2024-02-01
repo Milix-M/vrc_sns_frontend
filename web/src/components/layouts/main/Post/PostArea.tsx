@@ -38,7 +38,7 @@ const PostArea: React.FC = () => {
   }
 
   return (
-    <div className='w-full bg-overlay p-4 rounded-t-md'>
+    <div className='w-full bg-overlay p-4 rounded-t-md border-b border-slate-600/80'>
       <div className='flex flex-col rounded-md p-1 mb-2 text-foreground placeholder:focus'>
         <Textarea
           placeholder='いまなにしてはるん？'

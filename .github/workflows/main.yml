@@ -20,3 +20,5 @@ jobs:
                 script: |
                     cd ${{ secrets.SERVER_DEPLOY_DIR }}
                     git pull origin main
+                    docker compose down -v --rmi all
+                    sudo systemctl restart opensns_front.service

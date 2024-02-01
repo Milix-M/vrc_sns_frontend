@@ -9,3 +9,12 @@ export interface UserDataType {
   email?: string
   session_cert?: string
 }
+
+export interface EmojiType {
+  id: string;
+  native: string;
+  colons: string;
+  emotions: string[];
+  name: string;
+  skin: number | null;
+}

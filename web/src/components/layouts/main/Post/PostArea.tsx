@@ -9,10 +9,12 @@ import { useState } from 'react'
 import axios from 'lib/axios'
 import data from '@emoji-mart/data/sets/14/twitter.json'
 import Picker from '@emoji-mart/react'
+import { useTheme } from 'next-themes'
 
 const PostArea: React.FC = () => {
   const [content, setContent] = useState<string>('')
   const [isPickerOpened, setIsPickerOpened] = useState<boolean>(false)
+  const { theme } = useTheme();
 
   const handlePost = async () => {
     if (!content.trim()) {
@@ -73,6 +75,7 @@ const PostArea: React.FC = () => {
             {isPickerOpened && (
               <div className='absolute z-50 top-[40px] w-full'>
                 <Picker
+                  theme={theme === "light" ? "light" : "dark"}
                   data={data}
                   onEmojiSelect={console.log}
                   set='twitter'

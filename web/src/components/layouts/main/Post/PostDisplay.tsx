@@ -17,7 +17,7 @@ const PostDisplay: React.FC<PostProps> = ({ content }) => {
       <div className='flex flex-row'>
         <div className='post-avator pr-3'>
           <a href='#'>
-            <Avatar showFallback className='w-12 h-12' src='' />
+            <Avatar showFallback className='w-12 h-12' src={userData?.icon} />
           </a>
         </div>
         <div className='w-full'>

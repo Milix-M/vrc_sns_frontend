@@ -14,7 +14,7 @@ const PostDisplay: React.FC<PostProps> = ({ content }) => {
   const { userData } = userGetMe()
 
   return (
-    <div className={`${postAreaCSS.PostDisplay} bg-overlay p-4 border-b border-slate-600/80`}>
+    <div className={`${postAreaCSS.PostDisplay} bg-overlay p-4 border-b dark:border-slate-600/80`}>
       <div className='flex flex-row'>
         <div className='post-avator pr-3'>
           <a href='#'>
@@ -26,10 +26,10 @@ const PostDisplay: React.FC<PostProps> = ({ content }) => {
             <Link href='#'>
               <h3 className='font-bold pr-2 text-black dark:text-white hover:underline'>{userData?.username}</h3>
             </Link>
-            <span className='font-thin text-sm'>@{userData?.userid}</span>
+            <span className='text-sm text-slate-500 dark:text-slate-400'>@{userData?.userid}</span>
             <time
               title='2024/1/30 10:10:10'
-              className='font-thin text-sm ml-auto'
+              className='text-sm ml-auto text-slate-500 dark:text-slate-400'
             >
               数日前
             </time>

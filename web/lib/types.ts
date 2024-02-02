@@ -6,6 +6,7 @@ export interface UserDataType {
   id?: number
   userid?: string | null
   username?: string
+  icon?: string | null
   email?: string
   session_cert?: string
 }

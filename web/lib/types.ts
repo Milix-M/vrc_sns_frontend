@@ -8,6 +8,7 @@ export interface UserDataType {
   username?: string
   icon?: string
   email?: string
+  profile?: string
   session_cert?: string
 }
 

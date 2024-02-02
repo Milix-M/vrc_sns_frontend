@@ -1,4 +1,4 @@
-import { Avatar, Button } from '@nextui-org/react'
+import { Avatar, Button, Link } from '@nextui-org/react'
 import { BsThreeDots } from 'react-icons/bs'
 import { FaRegComment, FaRegStar } from 'react-icons/fa'
 import { FaRetweet } from 'react-icons/fa6'
@@ -12,6 +12,7 @@ interface PostProps {
 
 const PostDisplay: React.FC<PostProps> = ({ content }) => {
   const { userData } = userGetMe()
+
   return (
     <div className={`${postAreaCSS.PostDisplay} bg-overlay p-4 border-b border-slate-600/80`}>
       <div className='flex flex-row'>
@@ -22,7 +23,9 @@ const PostDisplay: React.FC<PostProps> = ({ content }) => {
         </div>
         <div className='w-full'>
           <div className='post-header-name flex flex-wrap items-center'>
-            <h3 className='font-bold pr-2'>{userData?.username}</h3>
+            <Link href='#'>
+              <h3 className='font-bold pr-2 text-black dark:text-white hover:underline'>{userData?.username}</h3>
+            </Link>
             <span className='font-thin text-sm'>@{userData?.userid}</span>
             <time
               title='2024/1/30 10:10:10'

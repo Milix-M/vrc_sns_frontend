@@ -1,10 +1,14 @@
-import userGetMe from "@/hooks/UserMe"
+import getUserInfo from "@/hooks/GetUserInfo"
 import { Button, Image } from "@nextui-org/react"
 import { FaRegCalendar } from "react-icons/fa"
 import { LiaBirthdayCakeSolid } from "react-icons/lia"
 
-const ProfileDetail: React.FC = () => {
-    const { userData } = userGetMe()
+interface ProfileProps {
+    userid: string
+  }
+
+const ProfileDetail: React.FC<ProfileProps> = ({ userid }) => {
+    const { userData } = getUserInfo(userid)
     return (
         <div className="">
             <Image

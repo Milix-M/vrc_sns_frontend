@@ -1,6 +1,7 @@
 import getUserInfo from "@/hooks/GetUserInfo"
-import { Button, Image } from "@nextui-org/react"
+import { Avatar, Button, Image, Link } from "@nextui-org/react"
 import { FaRegCalendar } from "react-icons/fa"
+import { FiChevronLeft } from "react-icons/fi"
 import { LiaBirthdayCakeSolid } from "react-icons/lia"
 
 interface ProfileProps {
@@ -10,7 +11,23 @@ interface ProfileProps {
 const ProfileDetail: React.FC<ProfileProps> = ({ userid }) => {
     const { userData } = getUserInfo(userid)
     return (
-        <div className="">
+        <div className="border-x bg-overlay dark:border-slate-600/80">
+            <div className="p-2 flex">
+                <Link href="/home">
+                    {/* <div className="items-center flex">
+                        <FiChevronLeft className="text-black dark:text-white"/>
+                    </div> */}
+                    <Button isIconOnly radius="full">
+                        <div className="items-center flex">
+                            <FiChevronLeft className="text-black dark:text-white"/>
+                        </div>
+                    </Button>
+                </Link>
+                <div className="flex flex-col ml-4">
+                    <h3 className="font-bold">{userData?.username}</h3>
+                    <span className="text-sm text-slate-600 dark:text-slate-400">1万 件のポスト</span>
+                </div>
+            </div>
             <Image
                 src={ userData?.headder }
                 alt="Headder Image."
@@ -19,7 +36,10 @@ const ProfileDetail: React.FC<ProfileProps> = ({ userid }) => {
                 radius="none"
             />
             <div className="p-2">
-                <div className="flex justify-end mt-2">
+                <div className="flex justify-between mt-2">
+                    {/* <div className="mb-10"> */}
+                        <Avatar showFallback src={userData?.icon} className="w-20 h-20"/>
+                    {/* </div> */}
                     <Button>
                         プロフィールを編集
                     </Button>

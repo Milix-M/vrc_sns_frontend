@@ -19,7 +19,7 @@ const ProfileDetail: React.FC<ProfileProps> = ({ userid }) => {
         activateClass = 'text-primary'
     }
     return (
-        <div className="">
+        <div className="border-b dark:border-slate-600/80">
             <div className="p-2 flex">
                 <Link href="/home">
                     {/* <div className="items-center flex">

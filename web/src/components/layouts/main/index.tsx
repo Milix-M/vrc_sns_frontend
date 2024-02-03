@@ -8,7 +8,7 @@ type LayoutProps = Required<{
 export const Layout = ({ children }: LayoutProps) => (
   <>
     {/* <Header /> */}
-    <main className='w-full max-w-[45rem] mx-auto my-2'>{children}</main>
+    <main className='w-full max-w-[45rem] mx-auto'>{children}</main>
   </>
 )
 

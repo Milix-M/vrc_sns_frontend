@@ -1,12 +1,11 @@
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import React from 'react'
 import getLayout from '@/components/layouts/main'
 import ProfileDetail from '@/components/layouts/main/Profile/ProfileDetail'
 
 const UserProfile = () => {
   const router = useRouter()
-  const [userId, setUserId] = useState<string>()
 
   useEffect(() => {
     const { userid } = router.query

@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import React from 'react'
 import getLayout from '@/components/layouts/main'
 import ProfileDetail from '@/components/layouts/main/Profile/ProfileDetail'
+import PostDisplay from '@/components/layouts/main/Post/PostDisplay'
 
 const UserProfile = () => {
   const router = useRouter()
@@ -15,10 +16,15 @@ const UserProfile = () => {
   }, [router.isReady])
 
   return (
-    <div>
+    <div className='border-x bg-overlay dark:border-slate-600/80'>
       { router.isReady && (
         <ProfileDetail userid={router.query.userid as string} />
       )}
+      <PostDisplay />
+      <PostDisplay />
+      <PostDisplay />
+      <PostDisplay />
+      <PostDisplay />
     </div>
   )
 }

@@ -23,7 +23,7 @@ const PostDisplay: React.FC<PostProps> = ({ content }) => {
         </div>
         <div className='w-full'>
           <div className='post-header-name flex flex-wrap items-center'>
-            <Link href='#'>
+            <Link href={`profile/${userData?.userid}`}>
               <h3 className='font-bold pr-2 text-black dark:text-white hover:underline'>{userData?.username}</h3>
             </Link>
             <span className='text-sm text-slate-500 dark:text-slate-400'>@{userData?.userid}</span>

@@ -65,7 +65,7 @@ const ProfileDetail: React.FC<ProfileProps> = ({ userid }) => {
                     </div>
                 </div>
                 <div className="mb-3">
-                    <span className="break-words">{userData?.profile}</span>
+                    <span className="break-words whitespace-pre-wrap">{userData?.profile}</span>
                 </div>
                 <div className="flex space-x-3">
                     <dl className="flex text-slate-600 dark:text-slate-400">

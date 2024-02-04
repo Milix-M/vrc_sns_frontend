@@ -35,7 +35,7 @@ const ProfileDetail: React.FC<ProfileProps> = ({ userid }) => {
                 </div>
             </div>
             <Image
-                src={ userData?.headder }
+                src={ userData?.header }
                 alt="Headder Image."
                 loading="lazy"
                 className=""

@@ -4,12 +4,12 @@ import { NextRouter } from 'next/router'
 const updateUserInfo = async (
   router: NextRouter,
   username: string,
-  userid: string
+  display_id: string
 ) => {
   axios
     .patch('/api/users/me', {
       username,
-      userid
+      display_id
     })
     .then(response => {
       router.push('/home')

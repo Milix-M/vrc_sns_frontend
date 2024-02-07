@@ -4,7 +4,7 @@ export interface ErrorResponse {
 
 export interface UserDataType {
   id?: number
-  userid?: string | null
+  display_id?: string | null
   username?: string
   icon?: string
   header?: string

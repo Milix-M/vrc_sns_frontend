@@ -18,7 +18,7 @@ const UserProfile = () => {
   return (
     <div className='border-x bg-overlay dark:border-slate-600/80'>
       { router.isReady && (
-        <ProfileDetail userid={router.query.userid as string} />
+        <ProfileDetail display_id={router.query.userid as string} />
       )}
       <PostDisplay />
       <PostDisplay />

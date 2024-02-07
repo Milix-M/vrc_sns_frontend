@@ -8,7 +8,7 @@ import * as yup from 'yup'
 
 type FormDataInfo = {
   name: string
-  userid: string
+  display_id: string
   // submit: any
 }
 
@@ -17,7 +17,7 @@ const scheme: yup.ObjectSchema<FormDataInfo> = yup.object().shape({
     .string()
     .required('名前を入力してください')
     .max(50, '50字以下にしてください'),
-  userid: yup
+  display_id: yup
     .string()
     .required('ユーザーIDを入力してください')
     .max(15, '15字以下にしてください')
@@ -45,7 +45,7 @@ const Signup = () => {
         <CardBody>
           <form
             onSubmit={handleSubmit(async data => {
-              await updateUserInfo(router, data.name, data.userid)
+              await updateUserInfo(router, data.name, data.display_id)
             })}
           >
             <div className='signup'>
@@ -74,13 +74,13 @@ const Signup = () => {
                     label='ユーザーID'
                     description='英数字、アンダースコア(_)15桁以内で入力'
                     errorMessage={
-                      errors.userid?.message && (
+                      errors.display_id?.message && (
                         <p className='text-xs text-red-500'>
-                          {errors.userid?.message}
+                          {errors.display_id?.message}
                         </p>
                       )
                     }
-                    {...register('userid')}
+                    {...register('display_id')}
                   />
                 </div>
               </div>

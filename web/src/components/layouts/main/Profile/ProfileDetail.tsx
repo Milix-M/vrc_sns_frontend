@@ -6,11 +6,11 @@ import { FiChevronLeft } from "react-icons/fi"
 import { LiaBirthdayCakeSolid } from "react-icons/lia"
 
 interface ProfileProps {
-    userid: string
+    display_id: string
 }
 
-const ProfileDetail: React.FC<ProfileProps> = ({ userid }) => {
-    const { userData } = getUserInfo(userid)
+const ProfileDetail: React.FC<ProfileProps> = ({ display_id }) => {
+    const { userData } = getUserInfo(display_id)
     const router = usePathname()
 
     let activateClass = ''
@@ -52,7 +52,7 @@ const ProfileDetail: React.FC<ProfileProps> = ({ userid }) => {
                 </div>
                 <div className="mb-1">
                     <h3 className="font-bold text-xl">{ userData?.username}</h3>
-                    <span className='text-sm text-slate-500 dark:text-slate-400'>@{userData?.userid}</span>
+                    <span className='text-sm text-slate-500 dark:text-slate-400'>@{userData?.display_id}</span>
                 </div>
                 <div className="flex mb-3">
                     <div className="mr-3 hover:underline">

@@ -84,6 +84,7 @@ const PostArea: React.FC = () => {
                   }
                   set='twitter'
                   i18n={i18n}
+                  autoFocus={true}
                   dynamicWidth={true}
                   onClickOutside={() => setIsPickerOpened(false)}
                 />

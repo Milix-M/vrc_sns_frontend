@@ -1,16 +1,15 @@
-import getUserInfo from "@/hooks/GetUserInfo"
 import { Avatar, Button, Image, Link } from "@nextui-org/react"
 import { usePathname } from "next/navigation"
 import { FaRegCalendar } from "react-icons/fa"
 import { FiChevronLeft } from "react-icons/fi"
 import { LiaBirthdayCakeSolid } from "react-icons/lia"
+import { UserDataType } from 'lib/types'
 
 interface ProfileProps {
-    display_id: string
+    userData?: UserDataType
 }
 
-const ProfileDetail: React.FC<ProfileProps> = ({ display_id }) => {
-    const { userData } = getUserInfo(display_id)
+const ProfileDetail: React.FC<ProfileProps> = ({ userData }) => {
     const router = usePathname()
 
     let activateClass = ''

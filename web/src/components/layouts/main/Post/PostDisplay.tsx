@@ -3,18 +3,19 @@ import { BsThreeDots } from 'react-icons/bs'
 import { FaRegComment, FaRegStar } from 'react-icons/fa'
 import { FaRetweet } from 'react-icons/fa6'
 import { IoBookmarkOutline } from 'react-icons/io5'
-import postAreaCSS from "./PostArea.module.scss"
-import userGetMe from '@/hooks/UserMe'
+import postAreaCSS from './PostArea.module.scss'
+import { PostType, UserDataType } from 'lib/types'
 
 interface PostProps {
-  content: string
+  userData?: UserDataType
+  postsData?: PostType
 }
 
-const PostDisplay: React.FC<PostProps> = ({ content }) => {
-  const { userData } = userGetMe()
-
+const PostDisplay: React.FC<PostProps> = ({ userData, postsData }) => {
   return (
-    <div className={`${postAreaCSS.PostDisplay} bg-overlay p-4 border-b dark:border-slate-600/80`}>
+    <div
+      className={`${postAreaCSS.PostDisplay} bg-overlay p-4 border-b dark:border-slate-600/80`}
+    >
       <div className='flex flex-row'>
         <div className='post-avator pr-3'>
           <a href='#'>
@@ -23,10 +24,14 @@ const PostDisplay: React.FC<PostProps> = ({ content }) => {
         </div>
         <div className='w-full'>
           <div className='post-header-name flex flex-wrap items-center'>
-            <Link href={`profile/${userData?.display_id}`}>
-              <h3 className='font-bold pr-2 text-black dark:text-white hover:underline'>{userData?.username}</h3>
+            <Link href={`/profile/${userData?.display_id}`}>
+              <h3 className='font-bold pr-2 text-black dark:text-white hover:underline'>
+                {userData?.username}
+              </h3>
             </Link>
-            <span className='text-sm text-slate-500 dark:text-slate-400'>@{userData?.display_id}</span>
+            <span className='text-sm text-slate-500 dark:text-slate-400'>
+              @{userData?.display_id}
+            </span>
             <time
               title='2024/1/30 10:10:10'
               className='text-sm ml-auto text-slate-500 dark:text-slate-400'
@@ -34,26 +39,24 @@ const PostDisplay: React.FC<PostProps> = ({ content }) => {
               数日前
             </time>
           </div>
-          <div className='mb-2 text-foreground'>
-            テストの投稿データです。 {content}
-          </div>
+          <div className='mb-2 text-foreground'>{postsData?.content}</div>
           <div className='flex flex-row justify-between'>
             <Button isIconOnly variant='light'>
-                <FaRegComment size={"1rem"}/>
+              <FaRegComment size={'1rem'} />
             </Button>
             <Button isIconOnly variant='light'>
-                <FaRetweet size={"1rem"}/>
+              <FaRetweet size={'1rem'} />
             </Button>
             <Button isIconOnly variant='light'>
-                <FaRegStar size={"1rem"}/>
+              <FaRegStar size={'1rem'} />
             </Button>
             <div className=''>
-                <Button isIconOnly variant='light'>
-                    <IoBookmarkOutline  size={"1rem"}/>
-                </Button>
-                <Button isIconOnly variant='light'>
-                    <BsThreeDots  size={"1rem"}/>
-                </Button>
+              <Button isIconOnly variant='light'>
+                <IoBookmarkOutline size={'1rem'} />
+              </Button>
+              <Button isIconOnly variant='light'>
+                <BsThreeDots size={'1rem'} />
+              </Button>
             </div>
           </div>
         </div>

@@ -1,9 +1,15 @@
 import { format, formatDistanceToNowStrict } from 'date-fns'
 import { ja } from 'date-fns/locale'
 
-export const isValidDate = (date: unknown): date is Date => {
-  return date instanceof Date && !isNaN(date.getTime());
-};
+export const isValidDate = (date: unknown) => {
+  if (date !== null) {
+    const formatdate = new Date(date as string)
+    return !isNaN(formatdate.getDate())
+  }
+  else {
+    return false
+  }
+}
 
 export const dateSerializer = (
   date: unknown,

@@ -19,7 +19,7 @@ export const dateSerializer = (
     case 'standard':
       return format(date as Date, 'yyyy-MM-dd HH:mm:ss', { locale: ja })
     case 'dateonly':
-      return format(date as Date, 'yyyy-MM-dd', { locale: ja })
+      return format(date as Date, 'yyyy/MM/dd', { locale: ja })
     case 'distance':
       return formatDistanceToNowStrict(date as Date, { locale: ja })
   }

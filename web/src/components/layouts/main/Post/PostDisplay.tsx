@@ -5,13 +5,14 @@ import { FaRetweet } from 'react-icons/fa6'
 import { IoBookmarkOutline } from 'react-icons/io5'
 import postAreaCSS from './PostArea.module.scss'
 import { PostType, UserDataType } from 'lib/types'
+import dateSerializer from '@/utils/DateSerializer'
 
 interface PostProps {
   userData?: UserDataType
-  postsData?: PostType
+  postData?: PostType
 }
 
-const PostDisplay: React.FC<PostProps> = ({ userData, postsData }) => {
+const PostDisplay: React.FC<PostProps> = ({ userData, postData }) => {
   return (
     <div
       className={`${postAreaCSS.PostDisplay} bg-overlay p-4 border-b dark:border-slate-600/80`}
@@ -33,13 +34,13 @@ const PostDisplay: React.FC<PostProps> = ({ userData, postsData }) => {
               @{userData?.display_id}
             </span>
             <time
-              title='2024/1/30 10:10:10'
+              dateTime={dateSerializer(postData?.created_at, "standard")}
               className='text-sm ml-auto text-slate-500 dark:text-slate-400'
             >
-              数日前
+              {dateSerializer(postData?.created_at, "ago")}
             </time>
           </div>
-          <div className='mb-2 text-foreground'>{postsData?.content}</div>
+          <div className='mb-2 text-foreground'>{postData?.content}</div>
           <div className='flex flex-row justify-between'>
             <Button isIconOnly variant='light'>
               <FaRegComment size={'1rem'} />

@@ -8,7 +8,8 @@ export const useUserInfo = (display_id: string) => {
     error,
     isValidating: isLoading
   } = useSWR<UserDataType, ErrorResponse>(
-    `/api/users/${display_id}/info`,
+    display_id ?
+    `/api/users/${display_id}/info` : null,
     fetcher
   )
   return { userData, isLoading, error }
@@ -20,11 +21,12 @@ export const useUserPosts = (display_id: string, limit: number) => {
     error,
     isValidating: isLoading
   } = useSWR<PostType[], ErrorResponse>(
+    display_id ?
     `/api/users/${display_id}/posts?` +
       new URLSearchParams({
         display_id: display_id,
         limit: limit.toString()
-      }).toString(),
+      }).toString() : null,
     fetcher
   )
   return { userPosts: userPosts, isLoading, error }

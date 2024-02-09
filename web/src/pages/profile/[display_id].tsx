@@ -19,7 +19,7 @@ const UserProfile = () => {
         <>
           <ProfileDetail userData={userData.userData} />
           {userPosts.userPosts?.map((post) => (
-            <PostDisplay userData={userData.userData} postsData={post}/>
+            <PostDisplay userData={userData.userData} postData={post}/>
           ))}
         </>
       )}

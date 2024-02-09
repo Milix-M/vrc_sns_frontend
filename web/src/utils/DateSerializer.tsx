@@ -1,7 +1,11 @@
 import { format, formatDistanceToNowStrict } from 'date-fns'
 import { ja } from 'date-fns/locale'
 
-const dateSerializer = (
+export const isValidDate = (date: unknown): date is Date => {
+  return date instanceof Date && !isNaN(date.getTime());
+};
+
+export const dateSerializer = (
   date: unknown,
   formatType: 'standard' | 'dateonly' | 'distance'
 ) => {
@@ -9,10 +13,8 @@ const dateSerializer = (
     case 'standard':
       return format(date as Date, 'yyyy-MM-dd HH:mm:ss', { locale: ja })
     case 'dateonly':
-      return format(date as Date, 'yyyy/MM/dd', { locale: ja })
+      return format(date as Date, 'yyyy-MM-dd', { locale: ja })
     case 'distance':
       return formatDistanceToNowStrict(date as Date, { locale: ja })
   }
 }
-
-export default dateSerializer

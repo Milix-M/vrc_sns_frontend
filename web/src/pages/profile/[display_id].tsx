@@ -3,14 +3,13 @@ import React, { useState } from 'react'
 import getLayout from '@/components/layouts/main'
 import ProfileDetail from '@/components/layouts/main/Profile/ProfileDetail'
 import PostDisplay from '@/components/layouts/main/Post/PostDisplay'
-import getUserInfo from '@/hooks/GetUserInfo'
-import getUserPosts from '@/hooks/GetUserPosts'
+import { useUserInfo, useUserPosts } from '@/hooks/GetUserDatas'
 
 const UserProfile = () => {
   const router = useRouter()
   const display_id = router.query.display_id as string
-  const userData = getUserInfo(display_id)
-  const userPosts = getUserPosts(display_id, 10)
+  const userData = useUserInfo(display_id)
+  const userPosts = useUserPosts(display_id, 10)
 
 
   return (

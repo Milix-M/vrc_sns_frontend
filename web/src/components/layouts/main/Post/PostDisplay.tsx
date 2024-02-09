@@ -5,7 +5,7 @@ import { FaRetweet } from 'react-icons/fa6'
 import { IoBookmarkOutline } from 'react-icons/io5'
 import postAreaCSS from './PostArea.module.scss'
 import { PostType, UserDataType } from 'lib/types'
-import dateSerializer from '@/utils/DateSerializer'
+import { dateSerializer } from '@/utils/DateSerializer'
 
 interface PostProps {
   userData?: UserDataType
@@ -13,6 +13,9 @@ interface PostProps {
 }
 
 const PostDisplay: React.FC<PostProps> = ({ userData, postData }) => {
+  if (userData === undefined && postData === undefined) {
+    return <p>now loading...</p>
+  }
   return (
     <div
       className={`${postAreaCSS.PostDisplay} bg-overlay p-4 border-b dark:border-slate-600/80`}

@@ -37,7 +37,7 @@ const PostDisplay: React.FC<PostProps> = ({ userData, postData }) => {
               dateTime={dateSerializer(postData?.created_at, "standard")}
               className='text-sm ml-auto text-slate-500 dark:text-slate-400'
             >
-              {dateSerializer(postData?.created_at, "ago")}
+              {dateSerializer(postData?.created_at, "distance")}
             </time>
           </div>
           <div className='mb-2 text-foreground'>{postData?.content}</div>

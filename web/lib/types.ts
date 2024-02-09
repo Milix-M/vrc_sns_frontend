@@ -10,6 +10,8 @@ export interface UserDataType {
   header?: string
   email?: string
   profile?: string
+  create_at: Date
+  date_of_birth: Date | null
   session_cert?: string
 }
 

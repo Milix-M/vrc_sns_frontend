@@ -4,6 +4,7 @@ import { FaRegCalendar } from "react-icons/fa"
 import { FiChevronLeft } from "react-icons/fi"
 import { LiaBirthdayCakeSolid } from "react-icons/lia"
 import { UserDataType } from 'lib/types'
+import { isValidDate, dateSerializer } from "@/utils/DateSerializer"
 
 interface ProfileProps {
     userData?: UserDataType
@@ -16,6 +17,9 @@ const ProfileDetail: React.FC<ProfileProps> = ({ userData }) => {
     let url = ''
     if (router === url) {
         activateClass = 'text-primary'
+    }
+    if (userData === undefined) {
+        return <p>now loading...</p>
     }
     return (
         <div className="border-b dark:border-slate-600/80">
@@ -67,15 +71,17 @@ const ProfileDetail: React.FC<ProfileProps> = ({ userData }) => {
                     <span className="break-words whitespace-pre-wrap">{userData?.profile}</span>
                 </div>
                 <div className="flex space-x-3">
-                    <dl className="flex text-slate-600 dark:text-slate-400">
-                        <LiaBirthdayCakeSolid size={'1.4rem'} className="mr-1"/>
-                        <dt className="mr-3">誕生日</dt>
-                        <dd>12月25日</dd>
-                    </dl>
+                    { isValidDate(userData?.date_of_birth) && (
+                        <dl className="flex text-slate-600 dark:text-slate-400">
+                            <LiaBirthdayCakeSolid size={'1.4rem'} className="mr-1"/>
+                            <dt className="mr-3">誕生日</dt>
+                            <dd>{dateSerializer(userData?.date_of_birth, 'dateonly')}</dd>
+                        </dl>
+                    )}
                     <dl className="flex text-slate-600 dark:text-slate-400">
                         <FaRegCalendar size={'1.4rem'} className="mr-1"/>
                         <dt className="mr-3">登録日</dt>
-                        <dd>11月11日</dd>
+                        <dd>{dateSerializer(userData?.created_at, 'dateonly')}</dd>
                     </dl>
                 </div>
             </div>

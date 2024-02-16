@@ -1,10 +1,11 @@
-import { Avatar, Button, Image, Link } from "@nextui-org/react"
+import { Avatar, Button, Image, Link, useDisclosure } from "@nextui-org/react"
 import { usePathname } from "next/navigation"
 import { FaRegCalendar } from "react-icons/fa"
 import { FiChevronLeft } from "react-icons/fi"
 import { LiaBirthdayCakeSolid } from "react-icons/lia"
 import { UserDataType } from 'lib/types'
 import { isValidDate, dateSerializer } from "@/utils/DateSerializer"
+import ProfileUpdate from "./ProfileUpdate"
 
 interface ProfileProps {
     userData?: UserDataType
@@ -12,6 +13,7 @@ interface ProfileProps {
 
 const ProfileDetail: React.FC<ProfileProps> = ({ userData }) => {
     const router = usePathname()
+    const { isOpen, onOpen, onOpenChange } = useDisclosure()
 
     let activateClass = ''
     let url = ''
@@ -49,10 +51,11 @@ const ProfileDetail: React.FC<ProfileProps> = ({ userData }) => {
                     {/* <div className="mb-10"> */}
                         <Avatar showFallback src={userData?.icon} className="w-20 h-20"/>
                     {/* </div> */}
-                    <Button>
+                    <Button onPress={onOpen}>
                         プロフィールを編集
                     </Button>
                 </div>
+                <ProfileUpdate isOpen={isOpen} onOpenChange={onOpenChange} userData={userData}/>
                 <div className="mb-1">
                     <h3 className="font-bold text-xl">{ userData?.username}</h3>
                     <span className='text-sm text-slate-500 dark:text-slate-400'>@{userData?.display_id}</span>

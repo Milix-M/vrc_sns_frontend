@@ -24,7 +24,6 @@ export const useUserPosts = (display_id: string, limit: number) => {
     display_id ?
     `/api/users/${display_id}/posts?` +
       new URLSearchParams({
-        display_id: display_id,
         limit: limit.toString()
       }).toString() : null,
     fetcher

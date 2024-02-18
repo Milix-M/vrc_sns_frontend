@@ -107,6 +107,7 @@ const PostArea: React.FC = () => {
             type='submit'
             onClick={handlePost}
             isLoading={progress}
+            isDisabled={!content.trim()}
           >
             ポスト
             <LuSend />

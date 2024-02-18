@@ -8,6 +8,7 @@ import { PostType } from 'lib/types'
 import useSWRInfinite from 'swr/infinite'
 import fetcher from 'lib/fetcher'
 import { useInView } from 'react-intersection-observer'
+import { Spinner } from '@nextui-org/react'
 
 const UserProfile = () => {
   const router = useRouter()
@@ -31,7 +32,7 @@ const UserProfile = () => {
   })
 
   const { ref, inView: isScrollEnd } = useInView({
-    rootMargin: '20px',
+    rootMargin: '100px',
   })
 
   useEffect(() => {
@@ -48,7 +49,14 @@ const UserProfile = () => {
           {data?.flat().map((post, index) => (
             <PostDisplay userData={userData.userData} postData={post} key={post.postid}/>
           ))}
+
           {!isValidating && <div ref={ref} aria-hidden='true' />}
+
+          {isValidating &&
+          <div className='flex justify-center p-12'>
+              <Spinner />
+          </div>
+          }
         </>
       )}
     </div>

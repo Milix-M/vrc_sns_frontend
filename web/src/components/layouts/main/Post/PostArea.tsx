@@ -41,7 +41,7 @@ const PostArea: React.FC = () => {
   }
 
   return (
-    <div className='w-full bg-overlay p-4 rounded-t-md border-b dark:border-slate-600/80'>
+    <div className='w-full p-4 border-b border-x dark:border-slate-600/80'>
       <div className='flex flex-col rounded-md p-1 mb-2 text-foreground placeholder:focus'>
         <Textarea
           placeholder='いまなにしてはるん？'
@@ -103,7 +103,8 @@ const PostArea: React.FC = () => {
             )}
           </div>
           <Button
-            className='bg-[#2b94ff] text-white font-bold'
+            className='text-white font-bold'
+            color='primary'
             type='submit'
             onClick={handlePost}
             isLoading={progress}

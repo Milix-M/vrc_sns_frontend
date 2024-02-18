@@ -11,7 +11,6 @@ import Picker from '@emoji-mart/react'
 import { useTheme } from 'next-themes'
 import i18n from '@emoji-mart/data/i18n/ja.json'
 import { EmojiType } from 'lib/types'
-import { Progress } from '@nextui-org/react'
 
 const PostArea: React.FC = () => {
   const [content, setContent] = useState<string>('')

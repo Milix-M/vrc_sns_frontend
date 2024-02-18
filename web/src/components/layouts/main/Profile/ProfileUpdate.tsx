@@ -120,10 +120,10 @@ const ProfileUpdate: React.FC<ModalProps> = ({
               />
             </ModalBody>
             <ModalFooter>
-              <Button color='danger' variant='light' onPress={onClose}>
+              <Button variant='light' onPress={onClose}>
                 閉じる
               </Button>
-              <Button className='bg-[#2b94ff]' type='submit' onPress={onClose}>
+              <Button color='primary' type='submit' onPress={onClose}>
                 保存
               </Button>
             </ModalFooter>

@@ -7,11 +7,14 @@ import { useUserInfo } from '@/hooks/GetUserDatas'
 import { useInView } from 'react-intersection-observer'
 import { Spinner } from '@nextui-org/react'
 import useGetPostInfinite from '@/hooks/useGetPostInfinite'
+import userGetMe from '@/hooks/UserMe'
 
 const UserProfile = () => {
   const router = useRouter()
   const display_id = router.query.display_id as string
   const userData = useUserInfo(display_id)
+  // このプロフィールページが自分であるかここで自分のアカウント情報を取得しているが,もっといい方法があるかも
+  const userMe = userGetMe()
 
   const {
     data: posts,
@@ -34,7 +37,7 @@ const UserProfile = () => {
     <div className='border-x dark:border-slate-700/70'>
       {router.isReady && (
         <>
-          <ProfileDetail userData={userData.userData} />
+          <ProfileDetail userData={userData.userData} isUserMe={userData.userData?.display_id === userMe.userData?.display_id} />
           {posts?.map((post, index) => (
             <PostDisplay
               userData={userData.userData}

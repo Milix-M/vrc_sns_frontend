@@ -27,22 +27,22 @@ const config: Config = {
         light: {
           layout: {},
           colors: {
-            background: "#E9E8E8",
+            background: "#ffffff",
             foreground: "#000000",
             divider: "#4b5563",
             overlay: "#ffffff",
-            primary: "#8758ff",
+            primary: "#2b94ff",
             focus: "#4b556333",
           },
         },
         dark: {
           layout: {},
           colors: {
-            background: "#181818",
+            background: "#212121",
             foreground: "#ffffff",
             overlay: "#050505",
-            primary: "#8758ff",
-            focus: "#ffffff33",
+            primary: "#2b94ff",
+            focus: "#C0D6DF",
           },
         },
       },

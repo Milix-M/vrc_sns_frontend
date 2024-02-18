@@ -9,9 +9,10 @@ import ProfileUpdate from "./ProfileUpdate"
 
 interface ProfileProps {
     userData?: UserDataType
+    isUserMe: boolean
 }
 
-const ProfileDetail: React.FC<ProfileProps> = ({ userData }) => {
+const ProfileDetail: React.FC<ProfileProps> = ({ userData, isUserMe }) => {
     const router = usePathname()
     const { isOpen, onOpen, onOpenChange } = useDisclosure()
 
@@ -51,9 +52,13 @@ const ProfileDetail: React.FC<ProfileProps> = ({ userData }) => {
                     {/* <div className="mb-10"> */}
                         <Avatar showFallback src={userData?.icon} className="w-20 h-20"/>
                     {/* </div> */}
-                    <Button onPress={onOpen}>
+                    { !isUserMe && (<Button>
+                        フォローする
+                    </Button> )}
+
+                    { isUserMe && (<Button onPress={onOpen}>
                         プロフィールを編集
-                    </Button>
+                    </Button> )}
                 </div>
                 <ProfileUpdate isOpen={isOpen} onOpenChange={onOpenChange} userData={userData}/>
                 <div className="mb-1">

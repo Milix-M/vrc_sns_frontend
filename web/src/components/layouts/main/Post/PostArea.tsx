@@ -11,9 +11,11 @@ import Picker from '@emoji-mart/react'
 import { useTheme } from 'next-themes'
 import i18n from '@emoji-mart/data/i18n/ja.json'
 import { EmojiType } from 'lib/types'
+import { Progress } from '@nextui-org/react'
 
 const PostArea: React.FC = () => {
   const [content, setContent] = useState<string>('')
+  const [progress, setProgress] = useState<boolean>(false)
   const [isPickerOpened, setIsPickerOpened] = useState<boolean>(false)
   const { theme } = useTheme()
 
@@ -28,9 +30,11 @@ const PostArea: React.FC = () => {
     }
 
     try {
+      setProgress(true)
       await axios.post('/api/post/create', requestBody)
 
       setContent('')
+      setProgress(false)
     } catch (err) {
       console.log('Error posting data:', err)
     }
@@ -43,7 +47,15 @@ const PostArea: React.FC = () => {
           placeholder='いまなにしてはるん？'
           value={content}
           onChange={e => setContent(e.target.value)}
+          isDisabled={progress}
         />
+        {/* { progress && (<Progress
+          className='mt-1'
+          size='sm'
+          isIndeterminate
+          aria-label='Loading...'
+          color='default'
+        />) } */}
         <div className='mt-3 flex flex-1 flex-row flex-wrap justify-between relative'>
           <div className='flex flex-row mr-2'>
             <Tooltip content='画像を追加'>
@@ -90,7 +102,12 @@ const PostArea: React.FC = () => {
               </div>
             )}
           </div>
-          <Button className='bg-[#2b94ff] text-white font-bold' type='submit' onClick={handlePost}>
+          <Button
+            className='bg-[#2b94ff] text-white font-bold'
+            type='submit'
+            onClick={handlePost}
+            isLoading={progress}
+          >
             ポスト
             <LuSend />
           </Button>

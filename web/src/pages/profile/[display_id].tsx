@@ -17,11 +17,11 @@ const UserProfile = () => {
     data: posts,
     isValidating,
     isReachingEnd,
-    fetchMore,
+    fetchMore
   } = useGetPostInfinite(`/api/users/${display_id}/posts`, 10)
 
   const { ref, inView: isScrollEnd } = useInView({
-    rootMargin: '100px',
+    rootMargin: '100px'
   })
 
   useEffect(() => {
@@ -32,20 +32,24 @@ const UserProfile = () => {
 
   return (
     <div className='border-x dark:border-slate-700/70'>
-      { router.isReady && (
+      {router.isReady && (
         <>
           <ProfileDetail userData={userData.userData} />
           {posts?.map((post, index) => (
-            <PostDisplay userData={userData.userData} postData={post} key={post.postid}/>
+            <PostDisplay
+              userData={userData.userData}
+              postData={post}
+              key={post.postid}
+            />
           ))}
 
           {!isValidating && <div ref={ref} aria-hidden='true' />}
 
-          {isValidating &&
-          <div className='flex justify-center p-12'>
+          {isValidating && (
+            <div className='flex justify-center p-12'>
               <Spinner />
-          </div>
-          }
+            </div>
+          )}
         </>
       )}
     </div>

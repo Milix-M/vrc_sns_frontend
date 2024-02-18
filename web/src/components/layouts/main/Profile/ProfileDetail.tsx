@@ -24,7 +24,7 @@ const ProfileDetail: React.FC<ProfileProps> = ({ userData }) => {
         return <p>now loading...</p>
     }
     return (
-        <div className="border-b dark:border-slate-600/80">
+        <div className="border-b dark:border-slate-700/70">
             <div className="p-2 flex">
                 <Link href="/home">
                     {/* <div className="items-center flex">

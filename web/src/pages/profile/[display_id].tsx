@@ -31,7 +31,7 @@ const UserProfile = () => {
   }, [isScrollEnd])
 
   return (
-    <div className='border-x dark:border-slate-600/80'>
+    <div className='border-x dark:border-slate-700/70'>
       { router.isReady && (
         <>
           <ProfileDetail userData={userData.userData} />

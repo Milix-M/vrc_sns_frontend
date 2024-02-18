@@ -18,7 +18,7 @@ const PostDisplay: React.FC<PostProps> = ({ userData, postData }) => {
   }
   return (
     <div
-      className={`w-full p-4 border-b dark:border-slate-600/80`}
+      className={`w-full p-4 border-b dark:border-slate-700/70`}
     >
       <div className='flex flex-row'>
         <div className='post-avator pr-3'>

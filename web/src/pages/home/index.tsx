@@ -5,7 +5,7 @@ import PostList from '@/components/layouts/main/Post/PostList'
 
 const Home = () => (
   <div className='border-x dark:border-slate-600/80'>
-    <div className='p-2 border-b dark:border-slate-600/80'>
+    <div className='p-2 border-b dark:border-slate-700/70'>
       <h1 className='text-center'>ホーム</h1>
     </div>
     <PostArea />
